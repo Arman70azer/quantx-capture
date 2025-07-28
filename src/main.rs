@@ -1,5 +1,5 @@
 mod modules;
-use modules::insider_tracker::fetch_blk_insider_trades;
+use modules::insider_tracker::InsiderTrade;
 
 fn normalize_name(raw: &str) -> String {
     let parts: Vec<&str> = raw.trim().split_whitespace().collect();
@@ -14,7 +14,7 @@ fn clean_number(raw: &str) -> String {
 }
 
 fn main() {
-    match fetch_blk_insider_trades() {
+    match InsiderTrade::fetch_blk_insider_trades() {
         Ok(trades) => {
             println!("📈 Dernières transactions d'initiés sur $BLK :\n");
 
